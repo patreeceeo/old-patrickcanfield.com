@@ -1,0 +1,154 @@
+
+body, html {
+  height: 100%;
+}
+
+body {
+  background-color: #292929;
+  color: White;
+  font-family: monospace;
+  line-height: 200%;
+}
+
+h4 {
+  font-size: 150%;
+  color: #F7A127;
+  font-weight: bold;
+  margin: 4rem 0 1rem 0;
+}
+
+aside {
+  float: right;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 100%;
+  font-style: italic;
+}
+
+.Page, .Header {
+  display: block;
+  margin: 0 auto;
+  max-width: 700px;
+  width: 80%;
+}
+
+.Header .Signature {
+  display: block;
+  max-width: 100%;
+}
+
+.Header {
+  position: relative;
+}
+
+.Header .Bubble {
+  position: absolute;
+  right: -30px;
+  bottom: 30px;
+  transform: rotate(-20deg) skew(-8deg);
+  -webkit-transform: rotate(-20deg) skew(-8deg);
+}
+
+.Bubble {
+  width: 200px;
+  max-width: 30%;
+  border-radius: 100px;
+}
+
+.Bubble.Bubble--shadow {
+  background-color: #F7A127;
+  right: -40px;
+  bottom: 20px;
+  height: 200px;
+}
+
+.List.List--inline li {
+  display: inline-table;
+}
+
+.List.List--inline.List--delta-bullet li:after {
+  content: " ∆ ";
+  color: #F7A127;
+  font-size: 75%;
+}
+.List.List--inline.List--delta-bullet li:last-child:after {
+  content: "";
+}
+
+.List.List--float li {
+  float: left;
+}
+
+.Thumbnail {
+  height: 7rem;
+  text-overflow: ellipsis;
+}
+
+.Portfolio {
+}
+
+.Portfolio li {
+  width: 25%;
+  min-width: 100px;
+}
+
+.BigRedButton {
+  background-color: tomato;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  color: rgba(255, 255, 255, 0.9);
+  font-family: inherit;
+  font-size: 200%;
+  margin: 4rem 0;
+  padding: 1rem;
+  border: 0;
+  cursor: pointer;
+  outline: none;
+}
+.BigRedButton:hover {
+  background-color: salmon;
+  transform: scale(1.1, 1.1);
+  -webkit-transform: scale(1.1, 1.1);
+}
+.BigRedButton:active {
+  background-color: tomato;
+}
+
+.u-distribute {
+  display: flex;
+  max-width: 100%;
+}
+
+p.u-right {
+  text-align: right;
+}
+
+img.u-right,
+div.u-right {
+  float: right;
+}
+
+.u-center {
+  text-align: center;
+}
+
+.u-nowrap, 
+.Portfolio figcaption {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.u-inline {
+  display: inline-block;
+}
+
+.u-clearfix:before,
+.u-clearfix:after {
+  content: " "; 
+  display: table;
+}
+.u-clearfix:after {
+  clear: both;
+}
+
