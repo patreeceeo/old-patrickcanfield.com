@@ -5,7 +5,12 @@
   doc = root.document;
 
   root.addEventListener("load", function () {
-    doc.querySelector("[x-game-control=start]").addEventListener("click", function () {
+    doc.querySelector("[x-game-rel=startbutton]").addEventListener("click", function () {
+      // Hide everything else
+      Array.prototype.slice.apply(doc.querySelectorAll("[x-game-rel=hide]")).forEach(function (el) {
+        el.style.display = "none"; 
+      });
+
       gameStage = doc.createElement("div");
 
       doc.querySelector("body").appendChild(gameStage);
@@ -18,7 +23,6 @@
 
       var colorIndex = 0;
       var backgroundColors = [
-        "black", 
         "blue", 
         "orange", 
         "green", 
