@@ -4,7 +4,10 @@
     <title>Patrick Canfield</title>
     <link rel="stylesheet" href="static/reset.css">
     <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="static/fonts/stylesheet.css">
     <script type="text/JavaScript" src="static/carousel.js"></script>
+    <script type="text/JavaScript" src="static/game.js"></script>
+    <link rel="icon" type="image/x-icon" href="static/favicon.ico">
   </head>
   <body>
     <header class="Header">
@@ -15,13 +18,14 @@
     <section class="Page">
       
       <h4>Technologies</h4>
-      <div x-carousel class="u-right" style="width: 200px">
-        <img class="Thumbnail" src="static/HTML5_Logo.svg" alt="HTML5 Powered with CSS3 / Styling" title="HTML5 Powered with CSS3 / Styling">
-        <img class="Thumbnail" src="static/AngularJS-Shield-large.png">
-        <img class="Thumbnail" src="static/cordova-logo.png">
-        <img class="Thumbnail" src="static/gopher.png">
-        <img class="Thumbnail" src="static/python-logo-glassy.png.dms">
-        <img class="Thumbnail" src="static/ruby-logo.png">
+      <div x-carousel class="u-right u-center" style="width: 110px">
+        <img class="Thumbnail" src="static/HTML5_Logo.png" alt="HTML5 Powered with CSS3 / Styling" title="HTML5 Powered with CSS3 / Styling">
+        <img class="Thumbnail" src="static/AngularJS-Shield-large.png" alt="AngularJS: the superheroic JavaScript MVW framework">
+        <img class="Thumbnail" src="static/cordova-logo.png" alt="Apache Cordova is a platform for building native mobile applications using HTML, CSS and JavaScript">
+        <img class="Thumbnail" src="static/gopher.png" alt="Go is an open source programming language that makes it easy to build simple, reliable, and efficient software">
+        <img class="Thumbnail" src="static/python-logo-glassy.png.dms" alt="Python is a programming language that lets you work quickly
+and integrate systems more effectively">
+        <img class="Thumbnail" src="static/ruby-logo.png" alt="A dynamic, open source programming language with a focus on simplicity and productivity. It has an elegant syntax that is natural to read and easy to write.">
       </div>
       <ul class="List List--inline List--delta-bullet">
         <li>Plain ol' JavaScript</li>
@@ -51,45 +55,80 @@
       </ul>
 
       <h4>Projects</h4>
-      <ul class="List List--float u-clearfix Portfolio u-center">
-        <li>
-          <figure>
-            <div class="Thumbnail"></div>
-            <figcaption>Venturescope</figcaption>
-          </figure>
-        </li>
-        <li>
-          <figure>
-            <div class="Thumbnail"></div>
-            <figcaption>FitRx Mobile App</figcaption>
-          </figure>
-        </li>
-        <li>
-          <figure>
-            <div class="Thumbnail"></div>
-            <figcaption>Web Music-streaming</figcaption>
-          </figure>
-        </li>
-        <li>
-          <figure>
-            <div class="Thumbnail"></div>
-            <figcaption>Web Boggle</figcaption>
-          </figure>
-        </li>
-      </ul>
-
-      <ul class="List List--inline List--delta-bullet u-center">
-        <li>Sophie</li>
-        <li>Synack</li>
-        <li>Divvy</li>
-        <li>Constant Contact</li>
-        <li>EventRay</li>
-      </ul>
+      <div class="VerticalSection u-clearfix">
+        <figure class="u-left">
+          <img class="Thumbnail" src="static/eventray-screenshot.png">
+        </figure>
+        <p>
+          <strong>Eventray</strong> was a startup I helped co-found to provide an integrated suite of tools for professional conference organizers. Think Microsoft Office or Google Docs, but specialized for organizations that produce conferences like TED or SXSW. We used <strong>Python</strong>'s Pyramid framework, new features of <strong>HTML5</strong> with polyfills, <strong>d3.js</strong> for reports and <strong>Backbone.js</strong> with <strong>Marionette.js</strong> to keep our front-end code well-organized.
+        </p>
+      </div>
+      <div class="VerticalSection u-clearfix">
+        <figure class="u-right">
+          <img class="Thumbnail" src="static/Honeycomb-large.gif">
+        </figure>
+        <p>
+          At <strong>Constant Contact</strong> I was part of a sort of front-end skonkworks team working on their next generation document editor. I frequently finished assignments ahead of schedule and took it upon myself to improve processes and technology where I could. I championed Test Driven Development with <strong>Jasmine.js</strong>, introduced <strong>Backbone.js</strong> and participated in discussions on improving inter-team communication. The color-picker interface pictured to the right I coded using <strong>Raphael.js</strong> and trigonometry.
+        </p>
+      </div>
+      <div class="VerticalSection u-clearfix">
+        <figure class="u-left">
+          <img class="Thumbnail" src="static/dozmia-screenshot3.png">
+        </figure>
+        <p>
+          I was contracted by a startup to create their user interface. I really wish I could show you the live demo as I'm quite happy with how it looks (and they are too) but they requested that I keep it secret since the product is still under development. I used <strong>Backbone.js</strong> and lots of fancy <strong>CSS3</strong>.
+        </p>
+      </div>
+      <div class="VerticalSection u-clearfix">
+        <figure class="u-right">
+          <img class="Thumbnail" src="static/synack-screenshot.gif">
+        </figure>
+        At <strong>Synack</strong> I was mainly a font-end developer, but I also wrote some <strong>Ruby</strong> on <strong>Rails</strong>. I was their go-to expert on JavaScript best practices. The assignment I'm most proud of is the ID verification step in their on-boarding process, which was highly dynamic and involved using the camera via <strong>HTML5</strong> and integrating with <strong>Jumio</strong> on the back-end.
+      </div>
+      <div class="VerticalSection u-clearfix">
+        <figure class="u-left">
+          <img class="Thumbnail" src="static/boggle-screenshot.jpg">
+        </figure>
+        <p>
+          This is my just-for-fun Web port of the word game included in BSD Unix, which is itself based on the tabletop game by Hasbro. I used <strong>Backbone.js</strong>. Click <a href="http://patrickcan.neocities.org/boggle.html" target="_blank">here</a> to play.
+        </p>
+      </div>
+      <div class="VerticalSection u-clearfix">
+        <figure class="u-right">
+          <img class="Thumbnail" src="static/divvy-screenshot.png">
+        </figure>
+        <p>
+           Another personal project. I hacked this together as an implementation of a solution I gave to an interview question. It uses <strong>Meteor</strong> for a snappy, real-time experience. The landing page also has a link to an old portfolio site of mine. Click <a href="http://divvy.meteor.com" target="_blank">here</a> to try it.
+        </p>
+      </div>
+      <div class="VerticalSection u-clearfix">
+        <figure class="u-left">
+          <img class="Thumbnail" src="static/sophie-screenshot.gif">
+        </figure>
+        <p>
+          A question and answer site I hacked together using <strong>Meteor</strong>. Check it out <a href="http://sophie.meteor.com" target="_blank">here</a>.
+        </p>
+      </div>
+      <div class="VerticalSection u-clearfix">
+        <figure class="u-right">
+          <img class="Thumbnail" src="static/fitrx-screenshot.jpg">
+        </figure>
+        <p>I was contracted remotely to help develop a mobile app called <strong>FitRx</strong>, which is a social network for people trying to stick to a exercise regimen. We used <strong>Cordova</strong> so we could have one codebase and target all major platforms and we used the <strong>Ionic</strong> framework for a native look and feel, which meant we also used <strong>Angular.js</strong>.
+      </div>
+      <div class="VerticalSection u-clearfix">
+        <strong>Venturescope</strong> is my latest personal project. It will be a mobile app inspired by my world travels in 2015 built using <strong>Go</strong> and <strong>Ionic</strong> framework and <strong>Backbone.js</strong>.
+      </div>
+      <div class="VerticalSection u-clearfix">
+        I built my travel blog <a href="http://onup.me" target="_blank">onup.me</a> using <strong>Python</strong> with the <strong>Flask</strong> framework fronted by <strong>Nginx</strong> for fast static assets and with formatting help from <strong>Markdown</strong>.
+      </div>
+      <div class="VerticalSection u-clearfix">
+        And then there's this website you're looking at right now, which was build using <strong>Go</strong>.
+      </div>
 
       <h4>Contact</h4>
       <p>First prove you're human (or a sufficiently advanced AI) by playing a little game:</p>
       <p class="u-center">
-        <button class="BigRedButton"><span>START!</span></button>
+        <a class="BigRedButton" href="/game">START!</a>
       </p>
     </section>
   </body>

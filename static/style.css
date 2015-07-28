@@ -5,23 +5,70 @@ body, html {
 
 body {
   background-color: #292929;
-  color: White;
-  font-family: monospace;
+  color: rgba(255, 255, 255, 0.8);
+  font-family: "Verdana";
   line-height: 200%;
 }
 
 h4 {
-  font-size: 150%;
+  font-family: "vampiro_oneregular";
+  font-size: 200%;
   color: #F7A127;
   font-weight: bold;
-  margin: 4rem 0 1rem 0;
+  margin: 8rem 0 1rem 0;
+}
+
+.VerticalSection {
+  margin-top: 4rem;
+}
+h4 + .VerticalSection {
+  margin-top: 3rem;
 }
 
 aside {
   float: right;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.4);
   line-height: 100%;
   font-style: italic;
+}
+
+strong {
+  color: black;
+  font-weight: bold;
+  background-color: rgba(247, 161, 39, 0.75);
+  padding: 0.5rem;
+  cursor: crosshair;
+}
+strong:hover {
+  background-color: rgba(247, 161, 39, 1);
+}
+
+a, 
+a:visited {
+  color: white;
+  text-decoration: underline;
+}
+a:hover {
+  color: rgb(247, 161, 39);
+}
+
+
+figure {
+  text-align: center;
+}
+
+figure.u-left {
+  margin: 0.5rem 2rem 1rem 0;
+}
+figure.u-right {
+  margin: 0.5rem 0 1rem 2rem;
+}
+
+figcaption {
+  color: #F7A127;
+  font-weight: bold;
+  line-height: 100%;
+  font-size: 100%;
 }
 
 .Page, .Header {
@@ -79,33 +126,29 @@ aside {
 }
 
 .Thumbnail {
-  height: 7rem;
-  text-overflow: ellipsis;
-}
-
-.Portfolio {
-}
-
-.Portfolio li {
-  width: 25%;
-  min-width: 100px;
+  max-height: 6rem; 
+  max-width: 100%;
+  vertical-align: middle;
 }
 
 .BigRedButton {
+  display: inline-block;
+  text-decoration: none;
   background-color: tomato;
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
   color: rgba(255, 255, 255, 0.9);
-  font-family: inherit;
+  font-family: "press_start_2pregular";
   font-size: 200%;
   margin: 4rem 0;
-  padding: 1rem;
+  padding: 2rem;
   border: 0;
   cursor: pointer;
   outline: none;
 }
 .BigRedButton:hover {
+  color: white;
   background-color: salmon;
   transform: scale(1.1, 1.1);
   -webkit-transform: scale(1.1, 1.1);
@@ -119,21 +162,26 @@ aside {
   max-width: 100%;
 }
 
+
+.u-left,
+.u-left {
+  float: left;
+}
+
+.u-right,
+.u-right {
+  float: right;
+}
 p.u-right {
   text-align: right;
 }
 
-img.u-right,
-div.u-right {
-  float: right;
-}
 
 .u-center {
   text-align: center;
 }
 
-.u-nowrap, 
-.Portfolio figcaption {
+.u-nowrap {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
