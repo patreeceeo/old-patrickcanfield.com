@@ -4,7 +4,7 @@
 
   var question, questions = [
     {
-      question: "What was the name of the hobbiest club\nat which the Apple Computer 1 was first\ndemonstrated? (1 word)",
+      question: "What was the name of the hobbiest club\nat which the Apple Computer 1 was first\ndemoed? (1 word)",
       answer: "homebrew"
     },
     {
@@ -27,6 +27,28 @@
     }, ms);
     return retval;
   }
+
+  function shuffle (ary) {
+    for(var index = 0; index < ary.length; index++) {
+      var random1 = Math.floor(Math.random() * ary.length);
+      var random2 = Math.floor(Math.random() * ary.length);
+      var temp = ary[random1];
+      ary[random1] = ary[random2];
+      ary[random2] = temp;
+    }
+    return ary;
+  }
+
+  function scrambleWords (sentence) {
+    var words = sentence.split(/\b/);
+    return words.map(function (word) {
+      if(word.length > 1) {
+        return word[0] + shuffle(Array.prototype.slice.call(word, 1, word.length - 1)).join("") + word[word.length - 1];
+      } else {
+        return word;
+      }
+    }).join("");
+  };
 
   function game () {
     // Hide everything else
@@ -58,7 +80,7 @@
     }).done = function () {
       question = questions[Math.floor(Math.random() * questions.length)];
 
-      forEachInterval(question.question, 10, function (letter) {
+      forEachInterval(scrambleWords(question.question), 10, function (letter) {
         questionBox.innerHTML += letter;
       }).done = function () {
         var answerLine = doc.createElement("p");
