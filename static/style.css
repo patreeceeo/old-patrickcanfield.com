@@ -157,6 +157,30 @@ figcaption {
   background-color: tomato;
 }
 
+.GameStage {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.MessageBox {
+  font: 100% press_start_2pregular;
+  margin: 2rem auto;
+  width: 40rem;
+}
+
+.MessageBox input {
+  position: absolute;
+  left: -100%;
+  /* border: 0; */
+  /* background-color: transparent; */
+  /* color: inherit; */
+  /* font: inherit; */
+  /* width: 32rem; */
+}
+
 .u-distribute {
   display: flex;
   max-width: 100%;
