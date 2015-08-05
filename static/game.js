@@ -80,7 +80,7 @@
     }).done = function () {
       question = questions[Math.floor(Math.random() * questions.length)];
 
-      forEachInterval(scrambleWords(question.question), 10, function (letter) {
+      forEachInterval(scrambleWords(question.question), 80, function (letter) {
         questionBox.innerHTML += letter;
       }).done = function () {
         var answerLine = doc.createElement("p");
