@@ -21,6 +21,9 @@
         question: "What was also banned in NYC around the\ntime of Prohibition because of its\nassociation with gambling? (1 word)",
         answer: "pinball"
       },
+      {
+        question: "What book popularized the phrase \"down the memory hole\"?",
+        answer: "1984"
     ];
     
     function forEachInterval (coll, ms, cb) {
