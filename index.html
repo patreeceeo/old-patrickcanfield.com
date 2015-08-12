@@ -5,13 +5,13 @@
     <link rel="stylesheet" href="static/reset.css">
     <link rel="stylesheet" href="static/style.css">
     <link rel="stylesheet" href="static/fonts/stylesheet.css">
-    <script type="text/JavaScript" src="static/angular/angular.min.js"></script>
+    <script type="text/JavaScript" src="static/angular/angular.js"></script>
     <script type="text/JavaScript" src="static/carousel.js"></script>
     <script type="text/JavaScript" src="static/game.js"></script>
     <link rel="icon" type="image/x-icon" href="static/favicon.ico">
   </head>
   <body ng-controller="GameController">
-    <div x-game-rel="hide">
+    <div ng-hide="game.playing">
       <header class="Header">
         <img class="Signature" src="static/signature.png">
         <img class="Bubble" src="static/me.png">
@@ -131,10 +131,21 @@
         <h4>Contact</h4>
         <p>First prove you're human (or a sufficiently advanced AI) by playing a little game:</p>
         <p class="u-center">
-          <button x-game-rel="startbutton" class="BigRedButton">START!</button>
+          <button class="BigRedButton" ng-click="play()">START!</button>
         </p>
-      </section>
-    </div>
+      </div>
+      <div class="GameStage" ng-show="game.playing" ng-style="{backgroundColor: game.backgroundColor}">
+        <pre class="MessageBox">{{game.question}}</pre>
+        <div class="MessageBox">
+          <p>{{game.answer}}{{game.cursor}}</p>
+          <input type="text" maxlength="31" x-rel="answer">
+          <button class="BigRedButton" ng-click="judgeAnswer()" ng-show="game.showOkButton">Ok!</button>
+        </div>
+        <p class="MessageBox">
+          {{game.feedback}}
+        </p>
+      </div>
+    </section>
   </body>
 </html>
 

@@ -169,6 +169,7 @@ figcaption {
   font: 100% press_start_2pregular;
   margin: 2rem auto;
   width: 40rem;
+  line-height: 2rem;
 }
 
 .MessageBox input {

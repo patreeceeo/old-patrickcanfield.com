@@ -1,12 +1,12 @@
 
 
-!(function (root, angular) {
+!(function (angular, doc) {
   "use strict"; 
 
-  var module = angular.module("www", ["www.game"]);
+  angular.module("www", ["www.game"]);
 
-  function GameController ($scope) {
-    var doc, gameStage, questionBox, answerBox;
+  function GameController ($scope, $http, $interval, $timeout) {
+    var gameStage, questionBox, answerBox;
 
     var question, questions = [
       {
@@ -18,20 +18,18 @@
         answer: "event horizon"
       },
       {
-        question: "What was also banned in NYC around the time of Prohibition because of its association with gambling? (1 word)",
+        question: "What was also banned in NYC around the\ntime of Prohibition because of its\nassociation with gambling? (1 word)",
         answer: "pinball"
-      }
+      },
     ];
     
-    doc = root.document;
-
     function forEachInterval (coll, ms, cb) {
       var intervalId, index = 0, retval = {};
-      intervalId = root.setInterval(function () {
+      intervalId = $interval(function () {
         cb(coll[index]);
         index++;
         if(index == coll.length) {
-          root.clearInterval(intervalId);
+          $interval.cancel(intervalId);
           retval.done();
         }
       }, ms);
@@ -60,23 +58,11 @@
       }).join("");
     };
 
-    function game () {
-      // Hide everything else
-      Array.prototype.slice.apply(doc.querySelectorAll("[x-game-rel=hide]")).forEach(function (el) {
-        el.style.display = "none"; 
-      });
+    $scope.play = function () {
 
-      gameStage = doc.createElement("div");
-      doc.querySelector("body").appendChild(gameStage);
-      gameStage.className = "GameStage";
-
-      questionBox = doc.createElement("pre");
-      gameStage.appendChild(questionBox);
-      questionBox.className = "MessageBox";
-
-      answerBox = doc.createElement("div");
-      gameStage.appendChild(answerBox);
-      answerBox.className = "MessageBox";
+      $scope.game = {
+        playing: true
+      };
 
       forEachInterval([
           "blue", 
@@ -86,82 +72,68 @@
           "purple",
           "black"
         ], 300, function (color) {
-          gameStage.style.backgroundColor = color;
+          $scope.game.backgroundColor = color;
       }).done = function () {
+        $scope.game.question = "";
         question = questions[Math.floor(Math.random() * questions.length)];
 
         forEachInterval(scrambleWords(question.question), 80, function (letter) {
-          questionBox.innerHTML += letter;
+          $scope.game.question += letter;
         }).done = function () {
-          var answerLine = doc.createElement("p");
-          answerBox.appendChild(answerLine);
+          var updateAnswerInterval;
+          var answered = false;  
+          var input = doc.querySelector("input[x-rel=answer]");
 
-          var answerSpan = doc.createElement("span");
-          answerLine.appendChild(answerSpan);
-          answerSpan.innerHTML = "Answer:";
-
-          var input = doc.createElement("input");
-          answerBox.appendChild(input);
-          input.maxLength=32;
           input.focus();
-          var updateAnswerInterval = root.setInterval(function () {
-            answerSpan.innerHTML = "Answer:" + input.value;
+          input.value = "";
+          updateAnswerInterval = $interval(function () {
+            $scope.game.answer = "Answer:" + input.value;
             input.focus(); 
+            if(input.value.length > 0) {
+              $scope.game.showOkButton = true;
+            } else {
+              $scope.game.showOkButton = false;
+            }
           }, 60);
 
-          var blinky = doc.createElement("span");
-          answerLine.appendChild(blinky);
-          var blinkyInterval = root.setInterval(function () {
-            if(blinky.innerHTML === "_") {
-              blinky.innerHTML = "";
+          $scope.game.cursor = "_";
+          var blinkyInterval = $interval(function () {
+            if($scope.game.cursor === "_") {
+              $scope.game.cursor = "";
             } else {
-              blinky.innerHTML = "_";
+              $scope.game.cursor = "_";
             }
           }, 333);
 
-          var button = doc.createElement("button");
-          answerBox.appendChild(button);
-          button.className = "BigRedButton";
-          button.innerHTML = "Ok!";
-
-          var answered = false;  
-          function judgeAnswer() {
+          $scope.judgeAnswer = function judgeAnswer() {
             if(!answered) {
               answered = true;
-              var box = doc.createElement("div");
-              box.className = "MessageBox";
-              gameStage.appendChild(box);
-              root.clearInterval(updateAnswerInterval);
-              root.clearInterval(blinkyInterval);
+              $interval.cancel(updateAnswerInterval);
+              $interval.cancel(blinkyInterval);
               if(input.value.toLowerCase() === question.answer) {
-                box.innerHTML = "Correct!";
+                $http.get("/DS0LKX").success(function (result) {
+                  $scope.game.feedback = "Correct! You may contact me at " + result.email;
+                }).error(function () {
+                 $scope.game.feedback = "You are correct, but there is an error in the program.";  
+                });
               } else {
-                box.innerHTML = "Incorrect. Please try again.";
-                setTimeout(function () {
-                  gameStage.remove();
-                  game();
-                }, 1000);
+                $scope.game.feedback = "Incorrect. Please try again.";
+                $timeout($scope.play, 1000);
               }
             }
           }
 
-          button.addEventListener("click", judgeAnswer);
           input.addEventListener("keyup", function (event) {
             if(event.keyCode === 13) {
-              judgeAnswer();
+              $scope.judgeAnswer();
             }
           });
         };
       };
     };
 
-    root.addEventListener("load", function () {
-      doc.querySelector("[x-game-rel=startbutton]").addEventListener("click", game);
-    });
-
-    return {};
   };
 
-  var module2 = angular.module("www.game", []).controller("GameController", GameController);
+  angular.module("www.game", []).controller("GameController", GameController);
 
-})(this, this.angular);
+})(this.angular, this.document);
